@@ -17,9 +17,9 @@ NEWSPIDER_MODULE = 'amazon.spiders'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'amazon (+http://www.yourdomain.com)'
-
+USER_AGENT='Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.62 Safari/537.36'
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -67,6 +67,19 @@ ROBOTSTXT_OBEY = True
 #ITEM_PIPELINES = {
 #    'amazon.pipelines.AmazonPipeline': 300,
 #}
+AMAZON_FILES='scrapy_files'
+import os
+if not os.path.exists(AMAZON_FILES):
+    os.makedirs(AMAZON_FILES)
+
+MONGO_URI='mongodb://192.168.14.58:27017/'
+MONGO_DATABASE='amazon'
+FILES_STORE = 'mws-xsd'
+# FILES_EXPIRES = 120
+ITEM_PIPELINES = {
+    'scrapy.pipelines.files.FilesPipeline': 1
+    # 'amazon.pipelines.MongoPipeline': 300
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
