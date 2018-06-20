@@ -54,7 +54,8 @@ ROBOTSTXT_OBEY = False
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
    #'amazon.middlewares.AmazonDownloaderMiddleware': 543,
-    'scrapy_crawlera.CrawleraMiddleware': 300
+    'scrapy_crawlera.CrawleraMiddleware': 300,
+    # 'amazon.downloader_middlewares.reschedule_middleware.ReschedulMiddleware': 570
 }
 
 CRAWLERA_ENABLED = True
@@ -90,7 +91,7 @@ ITEM_PIPELINES = {
     # 'amazon.pipelines.MongoPipeline': 300
 }
 
-LOG_FILE='scrapy.log'
+# LOG_FILE='scrapy.log'
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html

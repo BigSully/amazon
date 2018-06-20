@@ -4,7 +4,6 @@ import json
 
 class BasicSpider(scrapy.Spider):
     name = 'basic'
-    crawlera_enabled = True
     allowed_domains = ['example.com']
     start_urls = ['http://example.com/']
 
@@ -16,5 +15,7 @@ class BasicSpider(scrapy.Spider):
 
 
     def parse(self, response):
+        stats = self.crawler.stats
+        stats.inc_value('custom_count')
         item = json.loads(response.text)
         yield item
