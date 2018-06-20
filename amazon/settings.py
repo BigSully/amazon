@@ -52,9 +52,18 @@ ROBOTSTXT_OBEY = False
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'amazon.middlewares.AmazonDownloaderMiddleware': 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+   #'amazon.middlewares.AmazonDownloaderMiddleware': 543,
+    'scrapy_crawlera.CrawleraMiddleware': 300
+}
+
+CRAWLERA_ENABLED = True
+CRAWLERA_APIKEY = '88409c36a6b943bdafde8038234a3b40'
+CONCURRENT_REQUESTS = 10
+CONCURRENT_REQUESTS_PER_DOMAIN = 10
+AUTOTHROTTLE_ENABLED = False
+DOWNLOAD_TIMEOUT = 600
+
 
 # Enable or disable extensions
 # See https://doc.scrapy.org/en/latest/topics/extensions.html
@@ -80,6 +89,8 @@ ITEM_PIPELINES = {
     'scrapy.pipelines.files.FilesPipeline': 1
     # 'amazon.pipelines.MongoPipeline': 300
 }
+
+LOG_FILE='scrapy.log'
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
